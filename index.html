@@ -1,225 +1,245 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE SEWÖSTER ARCHIVE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SEWÖSTER ARCHIVE</title>
 
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #070b10;
-      color: #e6edf3;
-      font-family: "Courier New", monospace;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 780px;
-      border: 1px solid #30363d;
-      padding: 30px;
-      background: #0d1117;
-      box-shadow: 0 0 25px rgba(0, 255, 120, 0.15);
-    }
-
-    h1 {
-      color: #58a6ff;
-      letter-spacing: 2px;
-    }
-
-    .status {
-      color: #7ee787;
-      margin-bottom: 25px;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      background: #010409;
-      border: 1px solid #30363d;
-      color: #e6edf3;
-      font-size: 18px;
-      box-sizing: border-box;
-      margin-top: 10px;
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 12px 22px;
-      background: #238636;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      font-family: inherit;
-    }
-
-    button:hover {
-      background: #2ea043;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .error {
-      color: #ff7b72;
-      margin-top: 15px;
-    }
-
-    .success {
-      color: #7ee787;
-      margin-top: 15px;
-    }
-
-    .task {
-      margin-top: 25px;
-      line-height: 1.7;
-      border-top: 1px solid #30363d;
-      padding-top: 25px;
-    }
-
-    .task-title {
-      color: #ffa657;
-      font-size: 22px;
-    }
-
-    .small {
-      color: #8b949e;
-      font-size: 14px;
-    }
-  </style>
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  background:#070b10;
+  color:#e6edf3;
+  font-family:"Courier New",monospace;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.container{
+  width:90%;
+  max-width:900px;
+  background:#0d1117;
+  border:1px solid #30363d;
+  padding:30px;
+  box-shadow:0 0 30px rgba(0,255,120,.15);
+}
+h1{color:#58a6ff;letter-spacing:2px;}
+.status{color:#7ee787;}
+.task{
+  display:none;
+  margin-top:25px;
+  border-top:1px solid #30363d;
+  padding-top:25px;
+  line-height:1.7;
+}
+.active{display:block;}
+input{
+  width:100%;
+  padding:14px;
+  background:#010409;
+  border:1px solid #30363d;
+  color:#e6edf3;
+  font-size:18px;
+  box-sizing:border-box;
+}
+button{
+  margin-top:15px;
+  padding:12px 22px;
+  background:#238636;
+  color:white;
+  border:0;
+  cursor:pointer;
+  font-family:inherit;
+  font-size:16px;
+}
+button:hover{background:#2ea043;}
+.error{color:#ff7b72;margin-top:15px;}
+.success{color:#7ee787;margin-top:15px;}
+.title{color:#ffa657;font-size:22px;}
+img{
+  width:100%;
+  margin-top:20px;
+  border:1px solid #30363d;
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
+<div class="container">
 
-    <h1>THE SEWÖSTER ARCHIVE</h1>
+<h1>THE SEWÖSTER ARCHIVE</h1>
+<p>Fallakte: <strong>2407</strong></p>
+<p class="status">Status: Verschlüsselt</p>
 
-    <p>Fallakte: <strong>2407</strong></p>
-    <p class="status">Status: Verschlüsselt</p>
+<p>Suchbegriff / Schlüssel eingeben:</p>
+<input id="searchInput" placeholder="Archiv durchsuchen...">
+<button onclick="checkAnswer()">Suchen</button>
+<div id="message"></div>
 
-    <div id="searchArea">
-      <p class="small">Archivsystem online.</p>
-      <p>Suchbegriff eingeben:</p>
+<div id="task1" class="task">
+<p class="title">Aufgabe 1</p>
+<h2>Die geschlossene Tür</h2>
+<p>Manche Orte schließen ihre Türen.<br>Aber manche Erinnerungen bleiben offen.</p>
+<p>Vor einer Schicht im Hotel gab es einmal ein kleines Ritual.</p>
+<p>Derselbe Weg.<br>Derselbe Halt.<br>Derselbe Geschmack.</p>
+<p>Der Ort existiert vielleicht nicht mehr.<br>Aber das Archiv erinnert sich noch an seinen Namen.</p>
+</div>
 
-      <input id="searchInput" type="text" placeholder="Archiv durchsuchen..." />
-      <button onclick="searchArchive()">Suchen</button>
+<div id="task2" class="task">
+<p class="title">Aufgabe 2</p>
+<h2>Die alte Adresse</h2>
+<p>Manche Erinnerungen haben keinen Schlüssel.</p>
+<p>Sie warten einfach darauf, gefunden zu werden.</p>
+<p>Bevor vieles begann,<br>gab es einen Ort, der Teil der Geschichte wurde.</p>
+<p>Ein Ort, an dem unzählige Gedanken entstanden.</p>
+<p>Das Archiv hat nur einen Hinweis gefunden:</p>
+<p>Dort lebte einst die Person,<br>die diese Akte eröffnet hat.</p>
+<p><strong>Wie lautet die Adresse?</strong></p>
+</div>
 
-      <div id="searchMessage"></div>
-    </div>
+<div id="task3" class="task">
+<p class="title">Aufgabe 3</p>
+<h2>Der erste Kontakt</h2>
+<p>Jede Geschichte hat einen Anfang.</p>
+<p>Manche beginnen mit einem Zufall.</p>
+<p>Andere mit einer Entscheidung.</p>
+<p>Das Archiv hat einen Ort gefunden,<br>an dem sich zwei Wege zum ersten Mal gekreuzt haben.</p>
+<p>Damals war es nur ein gewöhnlicher Tag.</p>
+<p>Heute ist er Teil dieser Akte.</p>
+<p><strong>Finde den Ort.</strong></p>
+</div>
 
-    <div id="task1" class="task hidden">
-      <p class="success">ARCHIVTREFFER GEFUNDEN</p>
+<div id="task4" class="task">
+<p class="title">Aufgabe 4</p>
+<h2>Das erste Date</h2>
+<p>Der erste Kontakt wurde bestätigt.</p>
+<p>Doch das Archiv hat ein weiteres Ereignis gefunden.</p>
+<p>Kurz darauf trafen sich die beiden Beteiligten erneut.</p>
+<p>Nicht als Fremde.<br>Nicht zufällig.<br>Sondern mit einer Absicht.</p>
+<p>Das Archiv kennt weder Uhrzeit noch Gespräche.</p>
+<p>Nur den Ort.</p>
+<p>Dort fand das erste Date statt.</p>
+</div>
 
-      <p class="task-title">Aufgabe 1</p>
-      <h2>Die geschlossene Tür</h2>
+<div id="task5" class="task">
+<p class="title">Aufgabe 5</p>
+<h2>Das erste Bild</h2>
+<p>Das erste Date wurde bestätigt.</p>
+<p>Doch das Archiv hat noch ein weiteres Beweisstück gefunden.</p>
+<p>Ein Bild.</p>
+<p>Unscharf.<br>Unvollständig.<br>Aber wichtig.</p>
+<p>Die Aufnahme entstand nicht weit vom Ort des ersten Treffens.</p>
+<p>Zwei Personen hielten dort einen Moment fest,<br>ohne zu wissen, wie wichtig er einmal werden würde.</p>
+<p>Wo wurde das erste gemeinsame Foto gemacht?</p>
+</div>
 
-      <p>Manche Orte schließen ihre Türen.<br>
-      Aber manche Erinnerungen bleiben offen.</p>
+<div id="task6" class="task">
+<p class="title">Aufgabe 6</p>
+<h2>Die erste Berührung</h2>
+<p>Zu diesem Zeitpunkt war noch nichts ausgesprochen.</p>
+<p>Keine Erklärung.<br>Kein Geständnis.</p>
+<p>Und doch war bereits etwas anders.</p>
+<p>Zwei Personen saßen gemeinsam an einem Tisch.</p>
+<p>Sie sprachen.<br>Sie lachten.<br>Und irgendwann verschwand die Unsicherheit.</p>
+<p>Zum ersten Mal wurden dort Hände gehalten.</p>
+<p><strong>Wie lautet der Name dieses Ortes?</strong></p>
+</div>
 
-      <p>Vor einer Schicht im Hotel gab es einmal ein kleines Ritual.</p>
+<div id="task7" class="task">
+<p class="title">Aufgabe 7</p>
+<h2>Die kalte Nacht</h2>
+<p>Das Archiv hat eine ungewöhnliche Beobachtung gefunden.</p>
+<p>Die Nacht war kalt.</p>
+<p>Der Platz war begrenzt.</p>
+<p>Keiner wollte, dass dem anderen kalt wird.</p>
+<p>Immer wieder wechselte derselbe Gegenstand seinen Besitzer.</p>
+<p>Hin und her.</p>
+<p>Ohne Streit.<br>Ohne Worte.</p>
+<p>Welcher Gegenstand wurde in dieser Nacht ständig weitergegeben?</p>
+</div>
 
-      <p>Derselbe Weg.<br>
-      Derselbe Halt.<br>
-      Derselbe Geschmack.</p>
+<div id="task8" class="task">
+<p class="title">Aufgabe 8</p>
+<h2>Die erste Reise</h2>
+<p>Das Archiv hat eine Bewegung außerhalb des üblichen Einsatzgebietes festgestellt.</p>
+<p>Die Akte zeigt eine Reise.</p>
+<p>Noch keine lange gemeinsame Vergangenheit.</p>
+<p>Noch keine Garantie für die Zukunft.</p>
+<p>Und trotzdem beschlossen zwei Personen,<br>gemeinsam einen ganzen Tag in einer fremden Stadt zu verbringen.</p>
+<p>Eine Messe.<br>Viele Menschen.<br>Viele Eindrücke.</p>
+<p>Gesucht wird nicht die Veranstaltung.</p>
+<p>Gesucht wird die Stadt.</p>
+</div>
 
-      <p>Der Ort existiert vielleicht nicht mehr.<br>
-      Aber das Archiv erinnert sich noch an seinen Namen.</p>
+<div id="task9" class="task">
+<p class="title">Aufgabe 9</p>
+<h2>Das Beweisfoto</h2>
+<p>Das Archiv hat ein Foto sichergestellt.</p>
+<p>Die Antwort ist darin verborgen.</p>
+<p>Nicht geschrieben.<br>Nicht gedruckt.<br>Einfach Teil des Bildes.</p>
+<p>Finde die 13 Buchstaben,<br>die deinen zukünftigen Namen ergeben.</p>
+<img src="aufgabe9.png" alt="Aufgabe 9 Beweisfoto">
+</div>
 
-      <p><strong>Antwort eingeben:</strong></p>
-      <input id="answer1" type="text" placeholder="Schlüssel eingeben..." />
-      <button onclick="checkTask1()">Prüfen</button>
+<div id="final" class="task">
+<p class="success">ARCHIV ENTRIEGELT</p>
+<h2>Fallakte 2407 abgeschlossen.</h2>
+<p>Ergebnis der Untersuchung:</p>
+<p><strong>Sarah Michelle Koch wird Frau Sewöster.</strong></p>
+<p>Und das Archiv bestätigt:</p>
+<p>Diese Geschichte beginnt erst richtig am 24.07.2026.</p>
+</div>
 
-      <div id="task1Message"></div>
-    </div>
+</div>
 
-    <div id="task2" class="task hidden">
-      <p class="success">ZUGRIFF GEWÄHRT</p>
+<script>
+let current = 0;
 
-      <p class="task-title">Aufgabe 2</p>
-      <h2>Die alte Adresse</h2>
+function normalize(text){
+  return text.toLowerCase()
+    .trim()
+    .replaceAll("ß","ss")
+    .replaceAll("ö","oe")
+    .replaceAll("ü","ue")
+    .replaceAll("ä","ae")
+    .replaceAll(".","")
+    .replace(/\s+/g," ");
+}
 
-      <p>Manche Erinnerungen haben keinen Schlüssel.</p>
+const answers = [
+  ["lampi"],
+  ["stahls"],
+  ["bahnhofstrasse 40","bahnhof strasse 40","bahnhofstr 40"],
+  ["wittekindsquelle"],
+  ["burger king"],
+  ["bank bei der wittekindsquelle"],
+  ["piro"],
+  ["decke","die decke"],
+  ["hamburg"],
+  ["frau sewoester","frau sewoester","frausewoester"]
+];
 
-      <p>Sie warten einfach darauf, gefunden zu werden.</p>
+function checkAnswer(){
+  const input = normalize(document.getElementById("searchInput").value);
+  const msg = document.getElementById("message");
 
-      <p>Bevor vieles begann,<br>
-      gab es einen Ort, der Teil der Geschichte wurde.</p>
+  if(answers[current].includes(input)){
+    msg.innerHTML = '<p class="success">Zugriff gewährt. Nächste Spur freigeschaltet.</p>';
+    current++;
 
-      <p>Ein Ort, an dem unzählige Gedanken entstanden.</p>
-
-      <p>Das Archiv hat nur einen Hinweis gefunden:</p>
-
-      <p>Dort lebte einst die Person,<br>
-      die diese Akte eröffnet hat.</p>
-
-      <p><strong>Wie lautet die Adresse?</strong></p>
-
-      <input id="answer2" type="text" placeholder="Adresse eingeben..." />
-      <button onclick="checkTask2()">Prüfen</button>
-
-      <div id="task2Message"></div>
-    </div>
-
-  </div>
-
-  <script>
-    function normalize(text) {
-      return text
-        .toLowerCase()
-        .trim()
-        .replaceAll("ß", "ss")
-        .replaceAll("straße", "strasse")
-        .replaceAll("str.", "strasse")
-        .replaceAll(".", "")
-        .replace(/\s+/g, " ");
+    if(current <= 9){
+      document.getElementById("task"+current).classList.add("active");
+    } else {
+      document.getElementById("final").classList.add("active");
     }
 
-    function searchArchive() {
-      const input = normalize(document.getElementById("searchInput").value);
-      const message = document.getElementById("searchMessage");
+    document.getElementById("searchInput").value = "";
+  } else {
+    msg.innerHTML = '<p class="error">Keine Akte gefunden. Schlüssel ungültig.</p>';
+  }
+}
+</script>
 
-      if (input === "lampi") {
-        message.innerHTML = '<p class="success">Archivtreffer gefunden. Fallakte wird geöffnet...</p>';
-        document.getElementById("task1").classList.remove("hidden");
-        document.getElementById("searchArea").classList.add("hidden");
-      } else {
-        message.innerHTML = '<p class="error">Keine Akte gefunden.</p>';
-      }
-    }
-
-    function checkTask1() {
-      const answer = normalize(document.getElementById("answer1").value);
-      const message = document.getElementById("task1Message");
-
-      if (answer === "stahls") {
-        message.innerHTML = '<p class="success">Schlüssel akzeptiert. Nächste Spur freigeschaltet.</p>';
-        document.getElementById("task2").classList.remove("hidden");
-      } else {
-        message.innerHTML = '<p class="error">Zugriff verweigert. Schlüssel ungültig.</p>';
-      }
-    }
-
-    function checkTask2() {
-      const answer = normalize(document.getElementById("answer2").value);
-      const message = document.getElementById("task2Message");
-
-      if (
-        answer === "bahnhofstrasse 40" ||
-        answer === "bahnhof strasse 40" ||
-        answer === "bahnhofstraße 40" ||
-        answer === "bahnhof str. 40"
-      ) {
-        message.innerHTML = '<p class="success">Adresse bestätigt. Aufgabe 3 wird vorbereitet...</p>';
-      } else {
-        message.innerHTML = '<p class="error">Adresse nicht erkannt.</p>';
-      }
-    }
-  </script>
 </body>
 </html>
