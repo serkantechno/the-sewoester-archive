@@ -227,6 +227,7 @@ function checkAnswer(){
   if(answers[current].includes(input)){
     msg.innerHTML = '<p class="success">Zugriff gewährt. Nächste Spur freigeschaltet.</p>';
     current++;
+    localStorage.setItem("archiveProgress", current);
 
     if(current <= 9){
       document.getElementById("task"+current).classList.add("active");
