@@ -283,13 +283,15 @@ function checkAnswer(){
 }
   window.onload = function() {
 
-  for(let i = 1; i <= current && i <= 12; i++){
-    document.getElementById("task" + i).classList.add("active");
-  }
+    if(current === 0){
+        return;
+    }
 
-  if(current > 9){
-    document.getElementById("final").classList.add("active");
-  }
+    if(current <= 12){
+        document.getElementById("task" + current).classList.add("active");
+    } else {
+        document.getElementById("final").classList.add("active");
+    }
 
 };
 </script>
