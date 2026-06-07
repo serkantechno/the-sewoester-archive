@@ -193,6 +193,47 @@ img{
 
 </div>
 
+  <div id="task10" class="task">
+<p class="title">Aufgabe 10</p>
+<h2>Die Flugspur</h2>
+
+<p>HAJ</p>
+<p>↓</p>
+<p>SAW</p>
+<p>↓</p>
+<p>?</p>
+
+<p><strong>Antwort: ?</strong></p>
+</div>
+
+<div id="task11" class="task">
+<p class="title">Aufgabe 11</p>
+<h2>Die Insel</h2>
+
+<p>✈️</p>
+<p>🌴</p>
+<p>☀️</p>
+<p>🍹</p>
+<p>🏖️</p>
+
+<p><strong>Antwort: ?</strong></p>
+</div>
+
+<div id="task12" class="task">
+<p class="title">Aufgabe 12</p>
+<h2>Die Inselspur</h2>
+
+<p>PMI</p>
+<p>↓</p>
+<p>🏖️</p>
+<p>↓</p>
+<p>🐟</p>
+<p>↓</p>
+<p>?</p>
+
+<p><strong>Antwort: ?</strong></p>
+</div>
+
 <script>
 let current = Number(localStorage.getItem("archiveProgress")) || 0;
 
@@ -229,7 +270,7 @@ function checkAnswer(){
     current++;
     localStorage.setItem("archiveProgress", current);
 
-    if(current <= 9){
+    if(current <= 12){
       document.getElementById("task"+current).classList.add("active");
     } else {
       document.getElementById("final").classList.add("active");
@@ -242,7 +283,7 @@ function checkAnswer(){
 }
   window.onload = function() {
 
-  for(let i = 1; i <= current && i <= 9; i++){
+  for(let i = 1; i <= current && i <= 12; i++){
     document.getElementById("task" + i).classList.add("active");
   }
 
