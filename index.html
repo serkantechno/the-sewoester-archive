@@ -194,7 +194,7 @@ img{
 </div>
 
 <script>
-let current = 0;
+let current = Number(localStorage.getItem("archiveProgress")) || 0;
 
 function normalize(text){
   return text.toLowerCase()
@@ -217,7 +217,7 @@ const answers = [
   ["piro"],
   ["decke","die decke"],
   ["hamburg"],
-  ["frau sewoester","frau sewoester","frausewoester"]
+  ["frau sewoester","frau sewöster","frausewoester","frausewöster"]
 ];
 
 function checkAnswer(){
@@ -240,6 +240,17 @@ function checkAnswer(){
     msg.innerHTML = '<p class="error">Keine Akte gefunden. Schlüssel ungültig.</p>';
   }
 }
+  window.onload = function() {
+
+  for(let i = 1; i <= current && i <= 9; i++){
+    document.getElementById("task" + i).classList.add("active");
+  }
+
+  if(current > 9){
+    document.getElementById("final").classList.add("active");
+  }
+
+};
 </script>
 
 </body>
