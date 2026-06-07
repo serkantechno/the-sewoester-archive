@@ -57,6 +57,7 @@ button:hover{background:#2ea043;}
 .error{color:#ff7b72;margin-top:15px;}
 .success{color:#7ee787;margin-top:15px;}
 .title{color:#ffa657;font-size:22px;}
+#progressInfo{color:#8b949e;margin-top:15px;}
 img{
   width:100%;
   margin-top:20px;
@@ -77,6 +78,7 @@ img{
 <button onclick="checkAnswer()">Suchen</button>
 <div id="message"></div>
 <p id="progressInfo"></p>
+
 <div id="task1" class="task">
 <p class="title">Aufgabe 1</p>
 <h2>Die geschlossene Tür</h2>
@@ -182,6 +184,41 @@ img{
 <img src="aufgabe9.png" alt="Aufgabe 9 Beweisfoto">
 </div>
 
+<div id="task10" class="task">
+<p class="title">Aufgabe 10</p>
+<h2>Die Flugspur</h2>
+<p>HAJ</p>
+<p>↓</p>
+<p>SAW</p>
+<p>↓</p>
+<p>?</p>
+<p><strong>Antwort: ?</strong></p>
+</div>
+
+<div id="task11" class="task">
+<p class="title">Aufgabe 11</p>
+<h2>Die Insel</h2>
+<p>✈️</p>
+<p>🌴</p>
+<p>☀️</p>
+<p>🍹</p>
+<p>🏖️</p>
+<p><strong>Antwort: ?</strong></p>
+</div>
+
+<div id="task12" class="task">
+<p class="title">Aufgabe 12</p>
+<h2>Die Inselspur</h2>
+<p>PMI</p>
+<p>↓</p>
+<p>🏖️</p>
+<p>↓</p>
+<p>🐟</p>
+<p>↓</p>
+<p>?</p>
+<p><strong>Antwort: ?</strong></p>
+</div>
+
 <div id="final" class="task">
 <p class="success">ARCHIV ENTRIEGELT</p>
 <h2>Fallakte 2407 abgeschlossen.</h2>
@@ -191,47 +228,6 @@ img{
 <p>Diese Geschichte beginnt erst richtig am 24.07.2026.</p>
 </div>
 
-</div>
-
-  <div id="task10" class="task">
-<p class="title">Aufgabe 10</p>
-<h2>Die Flugspur</h2>
-
-<p>HAJ</p>
-<p>↓</p>
-<p>SAW</p>
-<p>↓</p>
-<p>?</p>
-
-<p><strong>Antwort: ?</strong></p>
-</div>
-
-<div id="task11" class="task">
-<p class="title">Aufgabe 11</p>
-<h2>Die Insel</h2>
-
-<p>✈️</p>
-<p>🌴</p>
-<p>☀️</p>
-<p>🍹</p>
-<p>🏖️</p>
-
-<p><strong>Antwort: ?</strong></p>
-</div>
-
-<div id="task12" class="task">
-<p class="title">Aufgabe 12</p>
-<h2>Die Inselspur</h2>
-
-<p>PMI</p>
-<p>↓</p>
-<p>🏖️</p>
-<p>↓</p>
-<p>🐟</p>
-<p>↓</p>
-<p>?</p>
-
-<p><strong>Antwort: ?</strong></p>
 </div>
 
 <script>
@@ -245,6 +241,7 @@ function normalize(text){
     .replaceAll("ü","ue")
     .replaceAll("ä","ae")
     .replaceAll(".","")
+    .replaceAll("-"," ")
     .replace(/\s+/g," ");
 }
 
@@ -258,41 +255,67 @@ const answers = [
   ["piro"],
   ["decke","die decke"],
   ["hamburg"],
-  ["frau sewoester","frau sewöster","frausewoester","frausewöster"]
+  ["frau sewoester","frausewoester"],
+  ["istanbul"],
+  ["mallorca"],
+  ["cala ratjada","calar ratjada"]
 ];
+
+function hideAllTasks(){
+  for(let i = 1; i <= 12; i++){
+    document.getElementById("task" + i).classList.remove("active");
+  }
+  document.getElementById("final").classList.remove("active");
+}
+
+function updateProgressInfo(){
+  const info = document.getElementById("progressInfo");
+
+  if(current === 0){
+    info.innerHTML = "";
+  } else if(current <= 12){
+    info.innerHTML = "Letzter Archivstand: Aufgabe " + current;
+  } else {
+    info.innerHTML = "Letzter Archivstand: Fallakte abgeschlossen";
+  }
+}
+
+function showCurrentTask(){
+  hideAllTasks();
+
+  if(current === 0){
+    updateProgressInfo();
+    return;
+  }
+
+  if(current <= 12){
+    document.getElementById("task" + current).classList.add("active");
+  } else {
+    document.getElementById("final").classList.add("active");
+  }
+
+  updateProgressInfo();
+}
 
 function checkAnswer(){
   const input = normalize(document.getElementById("searchInput").value);
   const msg = document.getElementById("message");
 
-  if(answers[current].includes(input)){
-    msg.innerHTML = '<p class="success">Zugriff gewährt. Nächste Spur freigeschaltet.</p>';
+  if(answers[current] && answers[current].includes(input)){
     current++;
     localStorage.setItem("archiveProgress", current);
 
-    if(current <= 12){
-      document.getElementById("task"+current).classList.add("active");
-    } else {
-      document.getElementById("final").classList.add("active");
-    }
-
+    msg.innerHTML = '<p class="success">Zugriff gewährt. Nächste Spur freigeschaltet.</p>';
     document.getElementById("searchInput").value = "";
+
+    showCurrentTask();
   } else {
     msg.innerHTML = '<p class="error">Keine Akte gefunden. Schlüssel ungültig.</p>';
   }
 }
-  window.onload = function() {
 
-    if(current === 0){
-        return;
-    }
-
-    if(current <= 12){
-        document.getElementById("task" + current).classList.add("active");
-    } else {
-        document.getElementById("final").classList.add("active");
-    }
-
+window.onload = function(){
+  showCurrentTask();
 };
 </script>
 
